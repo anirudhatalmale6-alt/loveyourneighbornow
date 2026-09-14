@@ -116,6 +116,8 @@ nav a.nl:hover{border-color:var(--green)}
   background:linear-gradient(180deg,rgba(19,23,58,.86) 0%,rgba(19,23,58,.72) 45%,rgba(19,23,58,.93) 100%);
 }
 .hero-in{padding:clamp(4rem,11vw,8.5rem) 0 clamp(3rem,7vw,5rem);max-width:52rem}
+.hero-logo{display:block;width:clamp(96px,17vw,150px);height:auto;margin:0 0 1.35rem;
+  filter:drop-shadow(0 3px 14px rgba(0,0,0,.45))}
 .hero h1{color:#fff;text-wrap:balance}
 .hero h1 em{font-style:normal;color:#8fd66a}
 .hero p{color:rgba(255,255,255,.87);font-size:clamp(1.05rem,1.9vw,1.28rem);max-width:44ch;margin-top:1.4rem}
@@ -378,6 +380,10 @@ footer a:hover{color:#8fd66a}
 <section class="hero" id="top">
   <img class="bg" src="assets/hero.webp" alt="Children in LYNN t-shirts at a community event in Haiti">
   <div class="wrap hero-in">
+    <!-- The mark sits at the top of the hero so the brand is the first thing seen,
+         and so anyone who wants the logo can press and hold it to save it. -->
+    <img class="hero-logo" src="assets/lynn-logo-light.png"
+         alt="Love Your Neighbor Now logo" width="220" height="220">
     <p class="eyebrow" style="color:#8fd66a">Serving families in Haiti and at home</p>
     <h1>Strengthening Families.<br>Empowering Communities.<br><em>Changing Lives.</em></h1>
     <p>Every week LYNN puts hot meals in front of children who would otherwise go without,
