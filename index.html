@@ -7,10 +7,27 @@
 <meta name="description" content="LYNN is a community nonprofit serving families in Haiti and in Miami — hot meals for children every week, school fees, trade training and small business loans.">
 <link rel="icon" href="assets/lynn-logo.png">
 
+<!-- Share preview. WhatsApp and Facebook fetch these from their own servers,
+     with no page to resolve against, so every URL here MUST be absolute - a
+     relative one simply yields no preview. The image is a PNG, not the .webp
+     that used to be here: WhatsApp's scraper is unreliable with webp.
+     assets/og-lynn.png is the logo centred on the site's cream, so it survives
+     both the 1200x630 banner and the small square crop WhatsApp often uses. -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Love Your Neighbor Now">
+<meta property="og:url" content="https://loveyourneighbornow.org/">
 <meta property="og:title" content="Love Your Neighbor Now — Strengthening Families in Haiti">
 <meta property="og:description" content="Hot meals for almost 50 children every week. 25 children sent to school. Trade training and small business loans. Give today.">
-<meta property="og:image" content="assets/hero.webp">
+<meta property="og:image" content="https://loveyourneighbornow.org/assets/og-lynn.png">
+<meta property="og:image:secure_url" content="https://loveyourneighbornow.org/assets/og-lynn.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Love Your Neighbor Now logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Love Your Neighbor Now — Strengthening Families in Haiti">
+<meta name="twitter:description" content="Hot meals for almost 50 children every week. 25 children sent to school. Trade training and small business loans. Give today.">
+<meta name="twitter:image" content="https://loveyourneighbornow.org/assets/og-lynn.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -749,8 +766,16 @@ footer a:hover{color:#8fd66a}
    makes the button explain itself instead of pretending to work.
  * ------------------------------------------------------------------ */
 var CONFIG = {
-  // Paste the Givebutter / Donorbox / PayPal giving link here.
-  DONATE_URL: "",
+  // LYNN's Givelify giving page, supplied by Jeffery 15 Sep 2026. Checked:
+  // it resolves to givelify.com/donate/love-your-neighbor-now-port-st-lucie-fl/...
+  DONATE_URL: "https://giv.li/etda4r",
+  // Whether DONATE_URL accepts ?amount= and ?frequency= and pre-fills them.
+  // FALSE for Givelify: the giv.li short link was tested with and without those
+  // parameters and lands on the identical page every time - it drops them. So
+  // the site must NOT pretend the chosen amount carries over; it tells the
+  // donor they will enter it on Givelify's page instead. Set true only for a
+  // processor actually proven to honour them.
+  DONATE_PREFILL: false,
   // Paste the form endpoint (e.g. Formspree) here.
   CONTACT_ENDPOINT: "",
   // LYNN's working inbox, from their own Organizational Credentials one-pager.
@@ -955,9 +980,15 @@ other.addEventListener('input', function () {
 giveBtn.addEventListener('click', function () {
   if (!amount) { other.focus(); return; }
   if (CONFIG.DONATE_URL) {
-    var u = CONFIG.DONATE_URL
-          + (CONFIG.DONATE_URL.indexOf('?') > -1 ? '&' : '?')
-          + 'amount=' + amount + '&frequency=' + freq;
+    var u = CONFIG.DONATE_URL;
+    if (CONFIG.DONATE_PREFILL) {
+      u += (u.indexOf('?') > -1 ? '&' : '?') + 'amount=' + amount + '&frequency=' + freq;
+    } else {
+      // The processor ignores an amount in the link, so say what happens next
+      // rather than letting the donor think the number travelled with them.
+      giveNote.textContent = 'Opening our secure giving page — please enter $' + amount
+                           + (freq === 'monthly' ? ' monthly' : '') + ' there to complete your gift.';
+    }
     window.open(u, '_blank', 'noopener');
   } else {
     // No processor connected yet. Say so plainly rather than looking broken.
