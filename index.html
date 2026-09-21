@@ -369,6 +369,50 @@ footer a:hover{color:#8fd66a}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+/* ── Reorganised content, 21 Sep 2026 ─────────────────────────────────────
+   LYNN: "I do not like the way the team just placed them on the site...
+   I need them categorized and identified." */
+
+/* the six WHAT WE DO areas */
+.wgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1rem;margin-top:2rem}
+.wcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;padding:1.2rem 1.25rem}
+.wcard h3{font-size:1.02rem;margin:0 0 .45rem;color:#8fd66a}
+.wcard p{font-size:.88rem;color:rgba(255,255,255,.8);margin:0;line-height:1.55}
+
+/* Haiti block on a light background */
+.school-light{background:var(--cream);border:1px solid rgba(0,0,0,.1);color:var(--ink)}
+.school-light h3{color:var(--ink)}
+.school-light p{color:rgba(0,0,0,.72)}
+.school-light .eyebrow{color:var(--green)}
+.chips.approach span{background:var(--green);border-color:var(--green);color:#fff;
+  font-weight:700;letter-spacing:.04em}
+
+/* photo filters */
+.gfilter{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
+.gfilter button{
+  font:inherit;font-size:.82rem;font-weight:700;cursor:pointer;
+  padding:.5rem .95rem;border-radius:999px;
+  border:1.5px solid rgba(0,0,0,.16);background:#fff;color:var(--ink);
+}
+.gfilter button:hover{border-color:var(--green)}
+.gfilter button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* one labelled block per program */
+.galgroup{margin-top:2.4rem}
+.galgroup .ggrid{margin-top:.9rem}
+.galhead{
+  font-size:1.05rem;margin:0;padding-bottom:.5rem;
+  border-bottom:2px solid rgba(0,0,0,.09);display:flex;align-items:center;gap:.6rem;
+}
+.galcount{
+  font-size:.72rem;font-weight:800;color:#fff;background:var(--green);
+  border-radius:999px;padding:.12rem .55rem;letter-spacing:.03em;
+}
+@media(max-width:520px){
+  .gfilter button{font-size:.76rem;padding:.45rem .8rem}
+}
 </style>
 </head>
 <body>
@@ -383,12 +427,18 @@ footer a:hover{color:#8fd66a}
       <span></span><span></span><span></span>
     </button>
     <nav id="nav">
+      <!-- Short labels on purpose: the full names ("Haiti & Missions") wrapped
+           every item onto two lines at 1280px and squeezed the brand until it
+           truncated to "LOVE YOUR NEIGHBOR N...". The sections keep the long
+           names; only the nav is abbreviated. -->
       <a class="nl" href="#about">About</a>
       <a class="nl" href="#programs">Programs</a>
+      <a class="nl" href="#haiti">Haiti</a>
       <a class="nl" href="#impact">Impact</a>
+      <a class="nl" href="#gallery-sec">Photos</a>
       <a class="nl" href="#involved">Get Involved</a>
       <a class="nl" href="#contact">Contact</a>
-      <a class="btn btn-give" href="#involved" data-give>Donate Now</a>
+      <a class="btn btn-give" href="#donate" data-give>Donate</a>
     </nav>
   </div>
 </header>
@@ -401,13 +451,13 @@ footer a:hover{color:#8fd66a}
          and so anyone who wants the logo can press and hold it to save it. -->
     <img class="hero-logo" src="assets/lynn-logo-light.png"
          alt="Love Your Neighbor Now logo" width="220" height="220">
-    <p class="eyebrow" style="color:#8fd66a">Serving families in Haiti and at home</p>
-    <h1>Strengthening Families.<br>Empowering Communities.<br><em>Changing Lives.</em></h1>
-    <p>Every week LYNN puts hot meals in front of children who would otherwise go without,
-       pays school fees for those who cannot, and teaches a trade to young people who need one.</p>
+    <p class="eyebrow" style="color:#8fd66a">Love Your Neighbor Now</p>
+    <h1>Empowering People.<br>Strengthening Families.<br><em>Transforming Communities.</em></h1>
+    <p>Serving with compassion. Creating opportunities. Building stronger,
+       self-sustaining communities.</p>
     <div class="hero-cta">
-      <a class="btn btn-give" href="#involved" data-give>Donate Now</a>
-      <a class="btn btn-light" href="#programs">See our work</a>
+      <a class="btn btn-give" href="#donate" data-give>Donate Now</a>
+      <a class="btn btn-light" href="#involved">Get Involved</a>
     </div>
   </div>
 </section>
@@ -506,8 +556,27 @@ footer a:hover{color:#8fd66a}
 <section class="pad programs" id="programs">
   <div class="wrap">
     <p class="eyebrow">What we do</p>
-    <h2>Four programs, one purpose.</h2>
-    <p class="lede">Each one exists because somebody in the community told us it was missing.</p>
+    <h2>Six areas of work.</h2>
+    <p class="lede">LYNN addresses immediate needs while equipping people with the tools and
+       support to build stronger families and healthier communities.</p>
+
+    <div class="wgrid">
+      <div class="wcard"><h3>Education &amp; Youth</h3><p>Creating opportunities for children and
+        young people to learn, develop skills, and become leaders.</p></div>
+      <div class="wcard"><h3>Family Strengthening</h3><p>Supporting families through education,
+        resources, relationships, and community connections.</p></div>
+      <div class="wcard"><h3>Health &amp; Wellness</h3><p>Connecting individuals and families with
+        health education, wellness resources, and supportive services.</p></div>
+      <div class="wcard"><h3>Economic Empowerment</h3><p>Building financial literacy,
+        entrepreneurship, career readiness, and pathways toward self-sufficiency.</p></div>
+      <div class="wcard"><h3>Humanitarian Service</h3><p>Responding to community needs through food
+        assistance, outreach, missions, school support, and essential resources.</p></div>
+      <div class="wcard"><h3>Faith &amp; Community</h3><p>Putting Christian faith into action through
+        compassion, service, prayer, and meaningful partnerships.</p></div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:3.4rem">Our programs</p>
+    <h2 style="margin-bottom:1.6rem">The work, in detail.</h2>
 
     <div class="pgrid">
       <article class="pcard">
@@ -544,14 +613,6 @@ footer a:hover{color:#8fd66a}
       </article>
     </div>
 
-    <!-- Named in LYNN's own materials as their educational initiative. -->
-    <div class="school">
-      <p class="eyebrow" style="color:#8fd66a">Educational initiative</p>
-      <h3>Marie Claire Heureuse School — Milot, Haiti</h3>
-      <p>Part of LYNN's educational work, supported through school leadership, teaching,
-         administration, chaplaincy and educational volunteers.</p>
-    </div>
-
     <p class="lede" style="margin-top:2.6rem;color:rgba(255,255,255,.8)">
       This school year, <b style="color:#8fd66a">80 children and 10 adolescents</b> have asked
       LYNN for help — with school, and with completing a technical trade so they can earn.
@@ -568,12 +629,44 @@ footer a:hover{color:#8fd66a}
   </div>
 </section>
 
+<!-- 3b. HAITI & MISSIONS ------------------------------------------ -->
+<section class="pad" id="haiti" style="background:var(--cream-2)">
+  <div class="wrap">
+    <p class="eyebrow">Where we serve</p>
+    <h2>South Florida &bull; Haiti &bull; local &amp; international communities</h2>
+
+    <div class="school school-light">
+      <p class="eyebrow">Haiti &amp; Marie Claire Heureuse School</p>
+      <h3>&Eacute;cole Marie Claire Heureuse de Milot</h3>
+      <p>LYNN is committed to serving communities in Haiti and proudly administers and supports
+         &Eacute;cole Marie Claire Heureuse de Milot in Milot, Haiti.</p>
+      <p>Our work focuses on education, student support, nutrition, technology, school
+         development, humanitarian service, and community empowerment.</p>
+      <div class="hero-cta" style="margin-top:1.4rem">
+        <a class="btn btn-light" href="#gallery-sec">Learn more</a>
+        <a class="btn btn-give" href="#donate" data-give>Support Haiti</a>
+      </div>
+    </div>
+
+    <p class="eyebrow" style="margin-top:3rem">Our approach</p>
+    <div class="chips approach">
+      <span>Serve</span><span>Educate</span><span>Equip</span>
+      <span>Connect</span><span>Empower</span><span>Transform</span>
+    </div>
+  </div>
+</section>
+
 <!-- gallery ------------------------------------------------------- -->
-<section class="pad">
+<section class="pad" id="gallery-sec">
   <div class="wrap">
     <p class="eyebrow">On the ground</p>
-    <h2>What your giving actually looks like.</h2>
-    <div class="ggrid" id="gallery"></div>
+    <h2>Our work, by program.</h2>
+    <p class="lede">Every photograph below is a real LYNN event, grouped and named so you can see
+       exactly which program it belongs to.</p>
+
+    <!-- Filters come first so the grouping is obvious before any scrolling. -->
+    <div class="gfilter" id="gfilter" role="group" aria-label="Filter photos by program"></div>
+    <div id="gallery"></div>
   </div>
 </section>
 
@@ -592,8 +685,14 @@ footer a:hover{color:#8fd66a}
 <!-- 4. GET INVOLVED ----------------------------------------------- -->
 <section class="pad give" id="involved">
   <div class="wrap">
-    <p class="eyebrow">Get involved</p>
-    <h2>Three ways to make this real.</h2>
+    <p class="eyebrow">Be part of the change</p>
+    <h2>Love is more than a word. Love is action.</h2>
+    <p class="lede" style="color:rgba(255,255,255,.82)">Your time, resources, skills, and
+       compassion can help create lasting change.</p>
+    <div class="chips approach" style="margin-top:1.2rem">
+      <span>Donate</span><span>Volunteer</span><span>Partner</span>
+      <span>Sponsor</span><span>Pray</span>
+    </div>
     <div class="give-grid" style="margin-top:2.4rem">
       <div class="ways">
         <div class="way">
@@ -625,6 +724,7 @@ footer a:hover{color:#8fd66a}
         </div>
       </div>
 
+      <span id="donate" aria-hidden="true"></span>
       <div class="panel" id="panel">
         <h3>Make a gift</h3>
         <p>Choose an amount. Every dollar is put to work in the programs above.</p>
@@ -840,50 +940,177 @@ var io = new IntersectionObserver(function (entries) {
 document.querySelectorAll('[data-count]').forEach(function (el) { io.observe(el); });
 
 /* gallery + lightbox ----------------------------------------------- */
+var GAL_CATS = [
+  ['school', 'Marie Claire Heureuse School'],
+  ['mission', 'Haiti Medical Mission'],
+  ['bahamas', 'Bahamas Mission'],
+  ['feeding', 'Feeding Program'],
+  ['training', 'Training Program'],
+  ['children', 'Children’s Day'],
+  ['workshop', 'Workshop Day'],
+  ['youth', 'Youth Conference'],
+  ['christmas', 'Christmas Day Program'],
+  ['hallelujah', 'Hallelujah Night'],
+  ['elderly', 'Elderly Meet Up'],
+  ['community', 'Community & Outreach'],
+];
+/* [file, category, alt, object-position?] - 79 photos, every one named and
+   filed under the program it belongs to. LYNN's note was: "I do not like the
+   way the team just placed them on the site... I need them categorized and
+   identified." An uncategorised wall of pictures was exactly the complaint. */
 var GALLERY = [
-  /* Photos LYNN sent on 3 September 2026, grouped by the event they came from.
-     They arrived as phone screenshots, so they are roughly 730px wide - the
-     lightbox below refuses to draw any picture larger than its own file. */
-  ['ev-hall-1',      'A hall full of children at a LYNN event in Haiti'],
-  ['ev-children-2',  'Children and volunteers on International Children’s Day'],
-  ['ev-children-1',  'Children in LYNN t-shirts singing on International Children’s Day'],
-  ['ev-mission-5',   'The LYNN volunteer team on the mission in Milot, July 2026'],
-  ['ev-mission-3',   'A clinic set up in a classroom during the Milot mission'],
-  ['ev-mission-4',   'The pharmacy table at the Milot medical mission'],
-  ['ev-mission-2',   'A medical volunteer seeing a mother and her child in Milot', '18% center'],
-  ['ev-mission-1',   'The community gathered for the mission in Milot, Haiti', '10% center'],
-  ['ev-christmas-1', 'Families at the LYNN Christmas gift table'],
-  ['ev-christmas-3', 'School supplies and gifts handed out at Christmas'],
-  ['ev-christmas-4', 'Children sharing a hot meal at a LYNN event'],
-  ['ev-christmas-2', 'A boy at the LYNN Christmas celebration'],
-  ['ev-seniors-1',   'A LYNN volunteer leading a meeting with seniors', '78% center'],
-  ['ev-seniors-2',   'Seniors gathered for a LYNN community meeting'],
-  ['ev-night-1',     'The children’s choir at LYNN’s Hallelujah Night'],
-  ['ev-night-2',     'Hallelujah Night at LYNN'],
-  ['ev-night-3',     'Young people in Hallelujah Night t-shirts'],
-  ['ev-night-4',     'LYNN volunteers at Hallelujah Night'],
-  ['ev-thanks-1',    'LYNN volunteers at the Thanksgiving celebration'],
-  ['g1',  'Children in LYNN t-shirts seated at a community gathering'],
-  ['g2',  'A crowd of young people at a LYNN event'],
-  ['g3',  'LYNN volunteer speaking at Children’s International Day'],
-  ['g4',  'Volunteers beside the Children’s International Day banner'],
-  ['g5',  'Children waiting at a LYNN distribution'],
-  ['g6',  'Young people working in the trade skills workshop'],
-  ['g7',  'Peace and Love garments produced in the workshop'],
-  ['g8',  'Trade training session in progress'],
-  ['g9',  'LYNN volunteers registering families'],
-  ['g10', 'A family collecting a school backpack']
+  /* ---- Marie Claire Heureuse School ---- */
+  ['gallery/school-1', 'school', 'Students and staff at École Marie Claire Heureuse de Milot, Haiti'],
+  ['gallery/school-2', 'school', 'Students and staff at École Marie Claire Heureuse de Milot, Haiti'],
+  ['gallery/school-3', 'school', 'Students and staff at École Marie Claire Heureuse de Milot, Haiti'],
+  ['gallery/school-4', 'school', 'Students and staff at École Marie Claire Heureuse de Milot, Haiti'],
+  ['gallery/school-5', 'school', 'Students and staff at École Marie Claire Heureuse de Milot, Haiti'],
+  ['gallery/school-6', 'school', 'Students and staff at École Marie Claire Heureuse de Milot, Haiti'],
+  /* ---- Haiti Medical Mission ---- */
+  ['ev-mission-5', 'mission', 'The LYNN volunteer team on the mission in Milot, July 2026'],
+  ['ev-mission-3', 'mission', 'A clinic set up in a classroom during the Milot mission'],
+  ['ev-mission-4', 'mission', 'The pharmacy table at the Milot medical mission'],
+  ['ev-mission-2', 'mission', 'A medical volunteer seeing a mother and her child in Milot', '18% center'],
+  ['ev-mission-1', 'mission', 'The community gathered for the mission in Milot, Haiti', '10% center'],
+  /* ---- Bahamas Mission ---- */
+  ['gallery/bahamas-1', 'bahamas', 'LYNN volunteers serving on the Bahamas mission'],
+  ['gallery/bahamas-2', 'bahamas', 'LYNN volunteers serving on the Bahamas mission'],
+  /* ---- Feeding Program ---- */
+  ['gallery/feeding-1', 'feeding', 'Children sharing a hot meal through LYNN’s feeding program'],
+  ['gallery/feeding-2', 'feeding', 'Children sharing a hot meal through LYNN’s feeding program'],
+  /* ---- Training Program ---- */
+  ['g6', 'training', 'Young people working in the trade skills workshop'],
+  ['g7', 'training', 'Peace and Love garments produced in the workshop'],
+  ['g8', 'training', 'Trade training session in progress'],
+  ['gallery/training-1', 'training', 'Young people learning a trade in a LYNN training workshop'],
+  ['gallery/training-2', 'training', 'Young people learning a trade in a LYNN training workshop'],
+  ['gallery/training-3', 'training', 'Young people learning a trade in a LYNN training workshop'],
+  ['gallery/training-4', 'training', 'Young people learning a trade in a LYNN training workshop'],
+  ['gallery/training-5', 'training', 'Young people learning a trade in a LYNN training workshop'],
+  ['gallery/training-6', 'training', 'Young people learning a trade in a LYNN training workshop'],
+  ['gallery/training-7', 'training', 'Young people learning a trade in a LYNN training workshop'],
+  ['gallery/training-8', 'training', 'Young people learning a trade in a LYNN training workshop'],
+  /* ---- Children’s Day ---- */
+  ['ev-children-2', 'children', 'Children and volunteers on International Children’s Day'],
+  ['ev-children-1', 'children', 'Children in LYNN t-shirts singing on International Children’s Day'],
+  ['g3', 'children', 'LYNN volunteer speaking at Children’s International Day'],
+  ['g4', 'children', 'Volunteers beside the Children’s International Day banner'],
+  ['gallery/children-1', 'children', 'Children at LYNN’s International Children’s Day celebration'],
+  ['gallery/children-2', 'children', 'Children at LYNN’s International Children’s Day celebration'],
+  ['gallery/children-3', 'children', 'Children at LYNN’s International Children’s Day celebration'],
+  ['gallery/children-4', 'children', 'Children at LYNN’s International Children’s Day celebration'],
+  /* ---- Workshop Day ---- */
+  ['gallery/workshop-1', 'workshop', 'A LYNN community workshop day'],
+  ['gallery/workshop-2', 'workshop', 'A LYNN community workshop day'],
+  /* ---- Youth Conference ---- */
+  ['gallery/youth-1', 'youth', 'LYNN’s annual youth conference'],
+  ['gallery/youth-2', 'youth', 'LYNN’s annual youth conference'],
+  ['gallery/youth-3', 'youth', 'LYNN’s annual youth conference'],
+  ['gallery/youth-4', 'youth', 'LYNN’s annual youth conference'],
+  ['gallery/youth-5', 'youth', 'LYNN’s annual youth conference'],
+  ['gallery/youth-6', 'youth', 'LYNN’s annual youth conference'],
+  /* ---- Christmas Day Program ---- */
+  ['ev-christmas-1', 'christmas', 'Families at the LYNN Christmas gift table'],
+  ['ev-christmas-3', 'christmas', 'School supplies and gifts handed out at Christmas'],
+  ['ev-christmas-4', 'christmas', 'Children sharing a hot meal at a LYNN event'],
+  ['ev-christmas-2', 'christmas', 'A boy at the LYNN Christmas celebration'],
+  ['gallery/christmas-1', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-2', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-3', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-4', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-5', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-6', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-7', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-8', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-9', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-10', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-11', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  ['gallery/christmas-12', 'christmas', 'Children receiving gifts at LYNN’s Christmas Day program'],
+  /* ---- Hallelujah Night ---- */
+  ['ev-night-1', 'hallelujah', 'The children’s choir at LYNN’s Hallelujah Night'],
+  ['ev-night-2', 'hallelujah', 'Hallelujah Night at LYNN'],
+  ['ev-night-3', 'hallelujah', 'Young people in Hallelujah Night t-shirts'],
+  ['ev-night-4', 'hallelujah', 'LYNN volunteers at Hallelujah Night'],
+  ['gallery/hallelujah-1', 'hallelujah', 'LYNN’s Hallelujah Night celebration'],
+  ['gallery/hallelujah-2', 'hallelujah', 'LYNN’s Hallelujah Night celebration'],
+  ['gallery/hallelujah-3', 'hallelujah', 'LYNN’s Hallelujah Night celebration'],
+  ['gallery/hallelujah-4', 'hallelujah', 'LYNN’s Hallelujah Night celebration'],
+  ['gallery/hallelujah-5', 'hallelujah', 'LYNN’s Hallelujah Night celebration'],
+  /* ---- Elderly Meet Up ---- */
+  ['ev-seniors-1', 'elderly', 'A LYNN volunteer leading a meeting with seniors', '78% center'],
+  ['ev-seniors-2', 'elderly', 'Seniors gathered for a LYNN community meeting'],
+  ['gallery/elderly-1', 'elderly', 'Seniors gathered for a LYNN elderly meet up'],
+  ['gallery/elderly-2', 'elderly', 'Seniors gathered for a LYNN elderly meet up'],
+  ['gallery/elderly-3', 'elderly', 'Seniors gathered for a LYNN elderly meet up'],
+  /* ---- Community & Outreach ---- */
+  ['ev-hall-1', 'community', 'A hall full of children at a LYNN event in Haiti'],
+  ['ev-thanks-1', 'community', 'LYNN volunteers at the Thanksgiving celebration'],
+  ['g1', 'community', 'Children in LYNN t-shirts seated at a community gathering'],
+  ['g2', 'community', 'A crowd of young people at a LYNN event'],
+  ['g5', 'community', 'Children waiting at a LYNN distribution'],
+  ['g9', 'community', 'LYNN volunteers registering families'],
+  ['g10', 'community', 'A family collecting a school backpack'],
 ];
 var gal = document.getElementById('gallery');
-GALLERY.forEach(function (g, i) {
-  var b = document.createElement('button');
-  b.type = 'button';
-  b.setAttribute('aria-label', 'View photo: ' + g[1]);
-  b.dataset.i = i;
-  var pos = g[2] ? ' style="object-position:' + g[2] + '"' : '';
-  b.innerHTML = '<img src="assets/' + g[0] + '.webp" alt="' + g[1] + '"' + pos + ' loading="lazy">';
-  gal.appendChild(b);
+var gfilter = document.getElementById('gfilter');
+
+/* Render one labelled block per program rather than one long wall. The heading
+   is the whole point: a picture nobody can place is just decoration. */
+function esc(t){ return String(t).replace(/[&<>"]/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+GAL_CATS.forEach(function (c) {
+  var slug = c[0], name = c[1];
+  var items = GALLERY.filter(function (g) { return g[1] === slug; });
+  if (!items.length) return;                    /* never print an empty heading */
+
+  var sec = document.createElement('div');
+  sec.className = 'galgroup';
+  sec.dataset.cat = slug;
+  sec.innerHTML = '<h3 class="galhead">' + esc(name) +
+                  ' <span class="galcount">' + items.length + '</span></h3>';
+  var grid = document.createElement('div');
+  grid.className = 'ggrid';
+
+  items.forEach(function (g) {
+    var i = GALLERY.indexOf(g);
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'View photo: ' + g[2]);
+    b.dataset.i = i;
+    var pos = g[3] ? ' style="object-position:' + g[3] + '"' : '';
+    b.innerHTML = '<img src="assets/' + g[0] + '.webp" alt="' + esc(g[2]) + '"' +
+                  pos + ' loading="lazy">';
+    grid.appendChild(b);
+  });
+  sec.appendChild(grid);
+  gal.appendChild(sec);
 });
+
+/* Filters hide groups; they never reorder or renumber anything, so the lightbox
+   index stays valid whatever is showing. */
+function setFilter(slug) {
+  [].forEach.call(gal.querySelectorAll('.galgroup'), function (el) {
+    el.style.display = (slug === 'all' || el.dataset.cat === slug) ? '' : 'none';
+  });
+  [].forEach.call(gfilter.querySelectorAll('button'), function (b) {
+    var on = b.dataset.cat === slug;
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+}
+(function buildFilter() {
+  var all = [['all', 'All photos']].concat(GAL_CATS.filter(function (c) {
+    return GALLERY.some(function (g) { return g[1] === c[0]; });
+  }));
+  all.forEach(function (c) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.dataset.cat = c[0]; b.textContent = c[1];
+    b.onclick = function () { setFilter(c[0]); };
+    gfilter.appendChild(b);
+  });
+  setFilter('all');
+})();
 var lb = document.getElementById('lb'), lbimg = document.getElementById('lbimg'), cur = 0;
 function show(i) {
   cur = (i + GALLERY.length) % GALLERY.length;
@@ -891,7 +1118,7 @@ function show(i) {
      nothing sets an explicit width, so the lightbox already stops at the file's
      own size. lynn-test.py asserts that for every picture on the page. */
   lbimg.src = 'assets/' + GALLERY[cur][0] + '.webp';
-  lbimg.alt = GALLERY[cur][1];
+  lbimg.alt = GALLERY[cur][2];          /* [1] is the category now, [2] the alt */
   lb.classList.add('on');
 }
 gal.addEventListener('click', function (e) {
