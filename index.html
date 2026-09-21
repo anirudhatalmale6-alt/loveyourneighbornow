@@ -413,6 +413,16 @@ footer a:hover{color:#8fd66a}
 @media(max-width:520px){
   .gfilter button{font-size:.76rem;padding:.45rem .8rem}
 }
+/* social links (21 Sep) */
+.social{list-style:none;display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0 0;padding:0}
+.social a{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.82rem;font-weight:700;text-decoration:none;
+  padding:.45rem .85rem;border-radius:999px;
+  border:1px solid rgba(255,255,255,.28);color:#fff;
+}
+.social a:hover{border-color:#8fd66a;color:#8fd66a}
+.social svg{width:16px;height:16px;flex:none}
 </style>
 </head>
 <body>
@@ -823,6 +833,22 @@ footer a:hover{color:#8fd66a}
         <img class="flogo" src="assets/lynn-logo-light.png" alt="Love Your Neighbor Now">
         <p>Love Your Neighbor Now Inc. serves families in Haiti and in our local community
            through spiritual, educational, social and community-development initiatives.</p>
+        <!-- The links Jeffery sent arrived with share and tracking tokens on them
+             (?mibextid=, ?stkn=, utm_source=chatgpt.com). Those identify whoever
+             shared the link, expire, and do not belong on a public page - so the
+             clean canonical addresses are used instead. The Facebook one was
+             verified: the share link resolves to /LYNN.LoveYourNeighborNow,
+             "Love Your Neighbor Now-LYNN". -->
+        <ul class="social" aria-label="LYNN on social media">
+          <li><a href="https://www.facebook.com/LYNN.LoveYourNeighborNow"
+                 target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg>
+            Facebook</a></li>
+          <li><a href="https://www.instagram.com/love_your_neighbor_now"
+                 target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+            Instagram</a></li>
+        </ul>
       </div>
       <div>
         <h4>Explore</h4>
@@ -840,6 +866,8 @@ footer a:hover{color:#8fd66a}
           <li><a href="#contact">Volunteer</a></li>
           <li><a href="#contact">Partner with us</a></li>
           <li><a href="#contact">Sponsor a student</a></li>
+          <li><a href="https://www.facebook.com/LYNN.LoveYourNeighborNow" target="_blank" rel="noopener noreferrer">Follow on Facebook</a></li>
+          <li><a href="https://www.instagram.com/love_your_neighbor_now" target="_blank" rel="noopener noreferrer">Follow on Instagram</a></li>
         </ul>
       </div>
     </div>
