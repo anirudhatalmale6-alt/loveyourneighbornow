@@ -423,6 +423,17 @@ footer a:hover{color:#8fd66a}
 }
 .social a:hover{border-color:#8fd66a;color:#8fd66a}
 .social svg{width:16px;height:16px;flex:none}
+/* A proper frame, asked for by name: "No frame nothing." A bare <img> dropped
+   beside a column of text was what they objected to. White matte, a real
+   border, a soft lift off the page, and a caption so the picture is identified
+   rather than decorative. */
+.framed{margin:0;background:#fff;padding:14px 14px 0;border:1px solid rgba(0,0,0,.1);
+  border-radius:16px;box-shadow:0 18px 40px rgba(16,35,63,.13)}
+.framed img{display:block;width:100%;border-radius:9px;box-shadow:none;
+  aspect-ratio:4/3;object-fit:cover}
+.framed figcaption{font-size:.82rem;color:var(--muted,#5B6B87);
+  padding:11px 2px 14px;line-height:1.5;text-align:center}
+@media(max-width:700px){ .framed{padding:10px 10px 0} }
 </style>
 </head>
 <body>
@@ -519,7 +530,11 @@ footer a:hover{color:#8fd66a}
         <p>Our incorporating members are fully dedicated and bring extensive experience serving
           the community.</p>
       </div>
-      <img src="assets/story.webp" alt="Families gathered at a LYNN community event">
+      <figure class="framed">
+        <img src="assets/story-2.webp"
+             alt="Children in LYNN t-shirts gathered at a LYNN event in Haiti">
+        <figcaption>Children at a LYNN gathering — the work this story is about.</figcaption>
+      </figure>
     </div>
 
     <div class="mission-cards">
