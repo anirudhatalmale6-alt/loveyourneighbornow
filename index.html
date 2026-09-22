@@ -434,6 +434,10 @@ footer a:hover{color:#8fd66a}
 .framed figcaption{font-size:.82rem;color:var(--muted,#5B6B87);
   padding:11px 2px 14px;line-height:1.5;text-align:center}
 @media(max-width:700px){ .framed{padding:10px 10px 0} }
+/* A button that stays legible on the cream panels. .btn-light is white-on-
+   translucent and belongs only on the navy band. */
+.btn-outline{border-color:rgba(16,35,63,.3);color:var(--navy);background:transparent}
+.btn-outline:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
 </style>
 </head>
 <body>
@@ -514,11 +518,13 @@ footer a:hover{color:#8fd66a}
       <div>
         <p class="eyebrow">Who we are</p>
         <h2>Neighbors helping neighbors — here and in Haiti.</h2>
-        <!-- LYNN's own wording, from their Organizational Credentials one-pager. -->
-        <p class="lede">Love Your Neighbor Now (LYNN) is a community-focused organization
-          committed to serving and empowering individuals, families and communities through
-          spiritual, educational, social, entrepreneurial, health and community-development
-          initiatives.</p>
+        <!-- LYNN's REVISED wording, 21 Sep. I added new sections in the rebuild and left
+             this paragraph on the older text - Linda caught it. -->
+        <p class="lede">Love Your Neighbor Now (LYNN) is a faith-based nonprofit committed to
+          empowering underserved individuals, families, and communities through spiritual,
+          educational, social, health, and economic development.</p>
+        <p class="lede">We believe every person has God-given potential and deserves the
+          opportunity to learn, grow, heal, lead, and thrive.</p>
         <p>LYNN was incorporated by a group of engaged community members who saw a
           simple, stubborn problem: families needed help that already existed nearby, and nobody
           was connecting them to it.</p>
@@ -540,14 +546,15 @@ footer a:hover{color:#8fd66a}
     <div class="mission-cards">
       <div class="mcard">
         <h3>Our Mission</h3>
-        <p>LYNN is committed to empowering people, families and communities through spiritual
-           development, education, health and wellness, family support, youth development,
-           entrepreneurship, community outreach and humanitarian service.</p>
+        <p>Through compassionate service, education, resources, and opportunities, LYNN
+           addresses immediate needs while equipping people with the tools and support needed
+           to build stronger families, healthier communities, and a sustainable future.</p>
       </div>
       <div class="mcard">
         <h3>Our Vision</h3>
-        <p>To see people and families equipped to become stronger, healthier, more connected
-           and more self-sustainable, while making a positive impact in their communities.</p>
+        <p>To see individuals, families, and communities transformed and empowered to become
+           self-sustaining, resilient, and productive, creating a lasting positive impact in
+           the lives of others.</p>
       </div>
     </div>
 
@@ -667,9 +674,14 @@ footer a:hover{color:#8fd66a}
          &Eacute;cole Marie Claire Heureuse de Milot in Milot, Haiti.</p>
       <p>Our work focuses on education, student support, nutrition, technology, school
          development, humanitarian service, and community empowerment.</p>
+      <!-- 🚨 .btn-light is white text on a translucent white fill - it is built for the
+           DARK programs band. I put it on this CREAM panel, so "Learn more" rendered white
+           on cream and was invisible. Linda highlighted it in yellow and asked for one clear
+           action: "Either Support or Donate". One visible button now, and .btn-light is
+           never used on a light background. -->
       <div class="hero-cta" style="margin-top:1.4rem">
-        <a class="btn btn-light" href="#gallery-sec">Learn more</a>
         <a class="btn btn-give" href="#donate" data-give>Support Haiti</a>
+        <a class="btn btn-outline" href="#gallery-sec">See our work in Haiti</a>
       </div>
     </div>
 
