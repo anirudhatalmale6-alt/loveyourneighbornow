@@ -67,7 +67,13 @@ img{max-width:100%;display:block}
 a{color:var(--green);text-decoration-thickness:1px;text-underline-offset:3px}
 h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.1;margin:0;font-weight:600}
 h1{font-size:clamp(2.3rem,6.2vw,4.3rem);font-weight:700;letter-spacing:-.02em}
-h2{font-size:clamp(1.85rem,4vw,2.9rem);letter-spacing:-.015em}
+/* 🚨 LYNN, 23 Sep: "leave a space between the titles and the texts". The
+   h1,h2,h3,h4 rule above sets margin:0, so every heading sat directly on top of
+   its first paragraph - "...here and in Haiti." ran straight into "Love Your
+   Neighbor Now (LYNN) is...". One default here fixes every section at once;
+   the handful of inline margin-bottom overrides still win where they exist. */
+h2{font-size:clamp(1.85rem,4vw,2.9rem);letter-spacing:-.015em;margin-bottom:1.05rem}
+h3{margin-bottom:.5rem}
 h3{font-size:clamp(1.2rem,2.2vw,1.5rem)}
 p{margin:0 0 1.05em}
 .wrap{width:min(var(--wrap),100% - 2.5rem);margin-inline:auto}
@@ -166,7 +172,9 @@ nav a.nl:hover{border-color:var(--green)}
 /* generic section -------------------------------------------------- */
 section{scroll-margin-top:80px}
 .pad{padding:clamp(3.5rem,8vw,6.5rem) 0}
-.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+/* align-items:center floated the About photo half a screen below its heading.
+   The two columns now start on the same line. */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:start}
 .split img{border-radius:var(--r);box-shadow:var(--shadow);width:100%}
 .mission-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:2rem}
 .mcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem;min-width:0}
@@ -434,6 +442,27 @@ footer a:hover{color:#8fd66a}
 .framed figcaption{font-size:.82rem;color:var(--muted,#5B6B87);
   padding:11px 2px 14px;line-height:1.5;text-align:center}
 @media(max-width:700px){ .framed{padding:10px 10px 0} }
+
+/* The LYNN mark on the About picture. It has to opt OUT of `.framed img`, which
+   forces every image to full width and a 4/3 crop - without this the logo would
+   be stretched across the frame and cropped square. */
+.about-figure{position:relative}
+/* `.framed img` forces 4/3 and crops to fill. This photograph is 16/9, so the
+   crop threw away the sides and left a frame full of trees with the people
+   squeezed along the bottom. Matching the source ratio means nothing is cut. */
+/* height:auto matters. The img carries width/height ATTRIBUTES, which map to a
+   presentational height:503px and beat aspect-ratio outright - the frame came
+   out square and cropped the sides off anyway. */
+.about-figure img:not(.about-mark){aspect-ratio:16/9;height:auto}
+.about-figure .about-mark{
+  position:absolute;top:26px;left:26px;width:74px;height:74px;
+  aspect-ratio:auto;object-fit:contain;border-radius:50%;
+  background:rgba(255,255,255,.94);padding:8px;
+  box-shadow:0 6px 18px rgba(16,35,63,.22);
+}
+@media(max-width:700px){
+  .about-figure .about-mark{top:18px;left:18px;width:56px;height:56px;padding:6px}
+}
 /* A button that stays legible on the cream panels. .btn-light is white-on-
    translucent and belongs only on the navy band. */
 .btn-outline{border-color:rgba(16,35,63,.3);color:var(--navy);background:transparent}
@@ -517,7 +546,7 @@ footer a:hover{color:#8fd66a}
     <div class="split">
       <div>
         <p class="eyebrow">Who we are</p>
-        <h2>Neighbors helping neighbors — here and in Haiti.</h2>
+        <h2>Neighbors helping neighbors — here and in Haiti</h2>
         <!-- LYNN's REVISED wording, 21 Sep. I added new sections in the rebuild and left
              this paragraph on the older text - Linda caught it. -->
         <p class="lede">Love Your Neighbor Now (LYNN) is a faith-based nonprofit committed to
@@ -536,10 +565,21 @@ footer a:hover{color:#8fd66a}
         <p>Our incorporating members are fully dedicated and bring extensive experience serving
           the community.</p>
       </div>
-      <figure class="framed">
-        <img src="assets/story-2.webp"
-             alt="Children in LYNN t-shirts gathered at a LYNN event in Haiti">
-        <figcaption>Children at a LYNN gathering — the work this story is about.</figcaption>
+      <!-- 🚨 LYNN, 23 Sep: "Change the photo to another one and place it better. This is
+           not the standard we promised. I'd rather you used the logo of the organization
+           with a better looking and more telling picture."
+           Three things were wrong, not one:
+           * the picture. story-2.webp is a dim indoor shot of one small group. This one
+             is the whole community outdoors in LYNN shirts - it tells the story.
+           * the placing. .split used align-items:center, so the frame floated down the
+             page with 150px of nothing above it while the text started at the top.
+             The column now starts where the heading starts.
+           * the logo was nowhere in this section at all. -->
+      <figure class="framed about-figure">
+        <img class="about-mark" src="assets/lynn-logo.png" alt="" width="1095" height="1095">
+        <img src="assets/gallery/children-2.webp" width="889" height="503"
+             alt="Children and volunteers in LYNN t-shirts gathered outdoors at a LYNN event in Haiti">
+        <figcaption>Love Your Neighbor Now &mdash; the community this work is built on.</figcaption>
       </figure>
     </div>
 
@@ -560,7 +600,7 @@ footer a:hover{color:#8fd66a}
 
     <!-- The six values, in LYNN's own order and words. -->
     <p class="eyebrow" style="margin-top:3rem">What guides us</p>
-    <h2 style="margin-bottom:1.6rem">Our core values.</h2>
+    <h2 style="margin-bottom:1.6rem">Our core values</h2>
     <div class="vgrid">
       <div class="vcard"><h4>Love</h4><p>Serve with compassion, dignity and respect.</p></div>
       <div class="vcard"><h4>Faith</h4><p>Put faith into action through prayer and service.</p></div>
@@ -577,7 +617,7 @@ footer a:hover{color:#8fd66a}
       <!-- No 501(c)(3) claim and no promise of a tax deduction until LYNN sends the IRS
            determination letter. Donors act on that sentence; it has to be provable.
            Fill CONFIG.EIN and both come back automatically. -->
-      <p><b>Every gift goes to the programs on this page.</b> LYNN is run by members and
+      <p><b>Every gift goes to the programs we implement.</b> LYNN is run by members and
          volunteers who live in the communities they serve.
          <span data-ein-slot><!-- 501(c)(3) line + EIN appear here once the determination letter arrives --></span></p>
     </div>
@@ -588,7 +628,7 @@ footer a:hover{color:#8fd66a}
 <section class="pad programs" id="programs">
   <div class="wrap">
     <p class="eyebrow">What we do</p>
-    <h2>Six areas of work.</h2>
+    <h2>Six areas of work</h2>
     <p class="lede">LYNN addresses immediate needs while equipping people with the tools and
        support to build stronger families and healthier communities.</p>
 
@@ -608,7 +648,7 @@ footer a:hover{color:#8fd66a}
     </div>
 
     <p class="eyebrow" style="margin-top:3.4rem">Our programs</p>
-    <h2 style="margin-bottom:1.6rem">The work, in detail.</h2>
+    <h2 style="margin-bottom:1.6rem">The work, in detail</h2>
 
     <div class="pgrid">
       <article class="pcard">
@@ -697,7 +737,7 @@ footer a:hover{color:#8fd66a}
 <section class="pad" id="gallery-sec">
   <div class="wrap">
     <p class="eyebrow">On the ground</p>
-    <h2>Our work, by program.</h2>
+    <h2>Our work, by program</h2>
     <p class="lede">Every photograph below is a real LYNN event, grouped and named so you can see
        exactly which program it belongs to.</p>
 
@@ -710,11 +750,14 @@ footer a:hover{color:#8fd66a}
 <!-- team ---------------------------------------------------------- -->
 <section class="pad" style="background:var(--cream-2)">
   <div class="wrap">
-    <p class="eyebrow">Leadership</p>
-    <h2>The people who show up.</h2>
-    <p class="lede">Our team of regulars and part-time volunteers take their convictions and turn
-       them into action. Think you would be a good fit?
-       <a href="#contact">Get in touch.</a></p>
+    <!-- 🚨 LYNN's own wording and LYNN's own list, 23 Sep. Linda: "They did not change
+         the Leadership names, nor did they change the text in that section." Correct -
+         this section still carried the first-draft roster. Everything below is
+         transcribed from the change document, including the order. -->
+    <p class="eyebrow">Our people</p>
+    <h2>Leadership</h2>
+    <p class="lede">LYNN is led by a group of committed and passionate individuals who share the
+       organization's values and who work daily to uphold its promise.</p>
     <div class="team" id="team"></div>
   </div>
 </section>
@@ -723,7 +766,7 @@ footer a:hover{color:#8fd66a}
 <section class="pad give" id="involved">
   <div class="wrap">
     <p class="eyebrow">Be part of the change</p>
-    <h2>Love is more than a word. Love is action.</h2>
+    <h2>Love is more than a word. Love is action</h2>
     <p class="lede" style="color:rgba(255,255,255,.82)">Your time, resources, skills, and
        compassion can help create lasting change.</p>
     <div class="chips approach" style="margin-top:1.2rem">
@@ -790,7 +833,7 @@ footer a:hover{color:#8fd66a}
     <div class="cgrid">
       <div>
         <p class="eyebrow">Contact</p>
-        <h2>Let's talk.</h2>
+        <h2>Let's talk</h2>
         <p class="lede">A nonprofit is only as strong as the community holding it up. Tell us how
            you want to help and we will come back to you.</p>
         <form id="cform" novalidate>
@@ -846,7 +889,7 @@ footer a:hover{color:#8fd66a}
 <!-- final CTA ----------------------------------------------------- -->
 <section class="pad final">
   <div class="wrap">
-    <h2>A child eats this week because someone decided to help.</h2>
+    <h2>A child eats this week because someone decided to help</h2>
     <p>Eighty children and ten adolescents have asked us for help this school year. We would like
        to say yes to all of them.</p>
     <a class="btn btn-give" href="#involved" data-give>Donate Now</a>
@@ -997,15 +1040,20 @@ document.querySelectorAll('[data-count]').forEach(function (el) { io.observe(el)
 /* gallery + lightbox ----------------------------------------------- */
 var GAL_CATS = [
   ['school', 'Marie Claire Heureuse School'],
-  ['mission', 'Haiti Medical Mission'],
+  /* LYNN names this event "Health Fair 2026 (Haiti) - all pics where the people
+     wear orange shirts". Checked against all 79 photographs, not just these
+     five: the orange team shirts appear in this group and nowhere else. */
+  ['mission', 'Health Fair 2026 (Haiti)'],
   ['bahamas', 'Bahamas Mission'],
   ['feeding', 'Feeding Program'],
   ['training', 'Training Program'],
-  ['children', 'Children’s Day'],
+  ['children', 'Children’s Day 2024'],
   ['workshop', 'Workshop Day'],
   ['youth', 'Youth Conference'],
-  ['christmas', 'Christmas Day Program'],
-  ['hallelujah', 'Hallelujah Night'],
+  ['christmas', 'Christmas Day'],
+  /* A LITERAL ampersand. These labels are written with textContent, so "&amp;"
+     here reaches the screen as the five characters &amp; - it did, once. */
+  ['hallelujah', 'Hallelujah Night (2022 & 2023)'],
   ['elderly', 'Elderly Meet Up'],
   ['community', 'Community & Outreach'],
 ];
@@ -1191,23 +1239,32 @@ document.addEventListener('keydown', function (e) {
 });
 
 /* team ------------------------------------------------------------- */
+/* 🚨 LYNN's roster as supplied 23 Sep, in LYNN's order. Do NOT re-sort it - the
+   order is the hierarchy. Names and titles are transcribed exactly as written,
+   including spellings that differ from the first draft (Naomie, not Nahomie;
+   Lynda Jean, not Lynda Joseph Jean). Five people from the old list are not on
+   the new one; that is what "remove what's written there now" asked for. */
 var TEAM = [
-  ['Lynda Joseph Jean', 'Founder / President'],
-  ['Dr Nahomie Mirville', 'Chairwoman'],
-  ['Nancy Adrien', 'Co Chair'],
-  ['Bella Gerton', 'Finance Secretary'],
-  ['Jona', 'Treasurer'],
-  ['Emmanuella', 'Assistant Treasurer'],
-  ['Jacinthe', 'Health Fair Coordinator'],
-  ['Christine', 'Activities Coordinator'],
-  ['Guerline', 'Youth Coordinator'],
-  ['Mr. Wilner Paul', 'Youth Coordinator Assistant'],
-  ['Mr. Johny', 'Social Media'],
-  ['Mr. Bisson', 'Education Coordinator']
+  ['Lynda Jean',           'Chief Executive Officer (CEO) &amp; President'],
+  ['Dr. Naomie Mirville',  'Chairwoman'],
+  ['Anthony Jean',         'Vice President of Operations &amp; Community Outreach'],
+  ['Jacinth Benjamin',     'Mission Director / Secretary'],
+  ['Guerline Coreus',      'Finance Director'],
+  ['Nimerode Toussaint',   'Public Relations Director'],
+  ['Johnny Bessard',       'Administrator / Program Director'],
+  ['Christine Eliassaint', 'Chairwoman &mdash; Activities Committee'],
+  ['Busson Desamours',     'Learning Director'],
+  ['Steven Clervil',       'Assistant Director / Youth Program Director'],
+  ['Anna Nicolas',         'Advisor'],
+  ['Davely Deschamps',     'Delegate'],
+  ['Rev. Alfred Cadet',    'Spiritual Advisor']
 ];
 var teamEl = document.getElementById('team');
 TEAM.forEach(function (p) {
-  var initials = p[0].replace(/^(Dr|Mr\.|Mrs\.|Ms\.)\s+/, '')
+  /* Honorifics are not initials. The old pattern wanted a space straight after
+     "Dr", so "Dr. Naomie Mirville" came out as DN and "Rev. Alfred Cadet" as RA.
+     The full stop is now optional and Rev/Pastor are included. */
+  var initials = p[0].replace(/^(Dr|Mr|Mrs|Ms|Rev|Pastor|Prof)\.?\s+/i, '')
                      .split(/\s+/).map(function (w) { return w[0]; }).join('').slice(0, 2);
   var d = document.createElement('div');
   d.className = 'person';
